@@ -1,0 +1,36 @@
+ZENVO ACADEMY — SEO + SECURITY PACKAGE
+======================================
+
+FILES
+- index.html: your supplied landing page, preserved with canonical, metadata and WebSite JSON-LD additions.
+- sitemap.xml: XML sitemap for the only confirmed indexable URL (the single-page homepage).
+- robots.txt: allows public crawling and points crawlers to the sitemap.
+- .htaccess: Apache rules for HTTPS/non-www canonicalization, security headers, directory listing protection and blocking common private/config files.
+- _headers: equivalent basic security headers for Netlify-style static hosting. Deploy this instead of .htaccess where supported.
+- .well-known/security.txt: vulnerability-reporting contact.
+
+DEPLOY
+1. Make a backup of the current website files and hosting configuration.
+2. Upload the CONTENTS of this ZIP to the website document root (often public_html/ or www/), not as a nested ZIP folder.
+3. If hosting uses Apache/cPanel, upload .htaccess. Check that mod_rewrite and mod_headers are enabled. Test the site immediately; if it returns a 500 error, restore the old .htaccess and ask the host to confirm module support.
+4. If hosting is Netlify, use _headers instead. Do not expect .htaccess to work on every static host. For Nginx, these directives must be configured in the server block by the host/admin.
+5. Confirm https://zenvoacademy.in/ loads, www redirects to the non-www URL, and these URLs return successfully:
+   https://zenvoacademy.in/robots.txt
+   https://zenvoacademy.in/sitemap.xml
+   https://zenvoacademy.in/.well-known/security.txt
+6. Add https://zenvoacademy.in/ as a Domain property in Google Search Console and complete DNS verification.
+7. Submit https://zenvoacademy.in/sitemap.xml in Search Console > Sitemaps. Use URL Inspection on the homepage and request indexing.
+8. Also set up Bing Webmaster Tools and submit the sitemap.
+
+IMPORTANT SEO REALITY
+- No file or agency can guarantee Google #1 rankings. Rankings depend on competition, useful original content, authority, technical health, user experience, location and time.
+- This is a one-page site, so the sitemap correctly lists only the homepage. Navigation anchors such as #course and #faq are not separate pages and should not be listed as independent sitemap URLs.
+- To rank for a wider set of AI-tool searches, create genuinely useful, original, indexable pages for each course/topic (for example AI video creation in Tamil, AI image tools in Tamil, AI avatar tutorials, AI video editing tutorials). Each page needs unique content, title, description, canonical URL and internal links; then add its URL to sitemap.xml.
+- Keep course claims, fees, tool names, contact details and FAQ answers accurate and consistent. Do not add fake reviews, fake ratings, keyword stuffing or doorway pages.
+
+SECURITY NOTES
+- These are baseline static-site protections, not a complete security audit or guarantee. They do not secure hosting accounts, DNS, email, payment gateways, third-party scripts or any backend.
+- Enable HTTPS at the hosting/CDN provider, keep registrar/hosting accounts protected with MFA, use unique passwords, keep backups, and update any CMS/plugins if used.
+- HSTS with includeSubDomains is included. Only deploy after confirming every subdomain is HTTPS-capable; otherwise remove includeSubDomains before deployment.
+- No Content-Security-Policy is forced because the supplied page uses inline CSS/JSON-LD and external Google Fonts/video integrations; an overly strict CSP could break the page. Add a tested CSP after auditing every script, frame and asset source.
+- Do not publish admin panels, backups, source maps, .env files or credentials in the public web root.
